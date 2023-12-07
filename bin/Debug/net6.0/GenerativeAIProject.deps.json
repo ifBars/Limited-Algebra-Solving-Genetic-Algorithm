@@ -1,0 +1,73 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "GenerativeAIProject/1.0.0": {
+        "dependencies": {
+          "MathParser.org-mXparser": "5.2.1",
+          "ncalc": "1.3.8",
+          "System.Linq.Dynamic.Core": "1.3.7"
+        },
+        "runtime": {
+          "GenerativeAIProject.dll": {}
+        }
+      },
+      "MathParser.org-mXparser/5.2.1": {
+        "runtime": {
+          "lib/net6.0/MathParser.org-mXparser.dll": {
+            "assemblyVersion": "5.2.1.0",
+            "fileVersion": "5.2.1.0"
+          }
+        }
+      },
+      "ncalc/1.3.8": {
+        "runtime": {
+          "lib/NCalc.dll": {
+            "assemblyVersion": "1.3.8.0",
+            "fileVersion": "1.3.8.0"
+          }
+        }
+      },
+      "System.Linq.Dynamic.Core/1.3.7": {
+        "runtime": {
+          "lib/net6.0/System.Linq.Dynamic.Core.dll": {
+            "assemblyVersion": "1.3.7.0",
+            "fileVersion": "1.3.7.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GenerativeAIProject/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MathParser.org-mXparser/5.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UZxx6OpGB7sv5zgGssw+8GfGImoPJbJqe8d5f3dj2+Et6V7RLLQLBdSQPmgWVHruSMXRWx6aE88XLzKzaO9n4w==",
+      "path": "mathparser.org-mxparser/5.2.1",
+      "hashPath": "mathparser.org-mxparser.5.2.1.nupkg.sha512"
+    },
+    "ncalc/1.3.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T3kt6mWc70x3Ex5PxOmuILy563CGAdoAnyknXX7Du2/SXs2T94hNwc5CVwZcwCu5/A2ZBZhnHnc5dpcqCRGQ0A==",
+      "path": "ncalc/1.3.8",
+      "hashPath": "ncalc.1.3.8.nupkg.sha512"
+    },
+    "System.Linq.Dynamic.Core/1.3.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7J9oS95JCcyOtnKCr0tYUOMAj67Ee3WKal6li20vEeuQFdD7C4XuAABysp3H5dx+wmHkXuUNoxW3+U+OEsx+JQ==",
+      "path": "system.linq.dynamic.core/1.3.7",
+      "hashPath": "system.linq.dynamic.core.1.3.7.nupkg.sha512"
+    }
+  }
+}
