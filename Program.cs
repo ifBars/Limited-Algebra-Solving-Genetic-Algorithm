@@ -10,6 +10,7 @@ class Program
     static Random rand = new Random(); // Moved outside Main
     static int mutations = 0;
     static int crossovers = 0;
+    static object lockObject = new object();
 
     static void Main()
     {
@@ -81,19 +82,14 @@ class Program
             int range = (int)Math.Sqrt(totalDesiredSize);
 
             // Iterate through possible values for populationSize
-            for (populationSize = 1; populationSize <= range; populationSize++)
-            {
-                // Calculate generations based on populationSize
-                generations = totalDesiredSize / populationSize;
-            }
+            generations = range * 2;
+            populationSize = range / 2;
         }
 
         List<Solution> totalPopulation = new List<Solution>();
         List<Solution> population = InitializePopulation(populationSize);
 
         int counter = 0;
-        object lockObject = new object();
-
         // Use parallelism to run each generation on a seperate thread
         Parallel.For(0, generations, generation =>
         {
@@ -137,7 +133,7 @@ class Program
             Console.WriteLine($"Generation Population Size: {populationSize}");
             Console.WriteLine($"Total Generations: {generations}");
             Console.WriteLine($"Total Mutations: {mutations}");
-            Console.WriteLine($"Total Crossovers: {crossovers}");
+            Console.WriteLine($"Total Crossovers/Children: {crossovers}");
             Console.WriteLine($"Final Best Solution Found: {finalBestSolution.Parameter}");
             Console.WriteLine($"Best Solution's Equation Result: {finalBestSolution.Result}");
             Console.WriteLine($"Expected Solution: {expectedSolution}");
@@ -251,8 +247,12 @@ class Program
             {
                 // Combine parameters of two parents to create a child
                 Solution child = new Solution((parent1.Parameter + parent2.Parameter) / 2);
-                newPopulation.Add(child);
-                crossovers++;
+                lock (lockObject)
+                {
+                    // Critical section: Ensure atomic updates to shared data
+                    newPopulation.Add(child);
+                    crossovers++;
+                }
             }
             else
             {
@@ -273,7 +273,10 @@ class Program
             if (rand.NextDouble() < mutationRate)
             {
                 solution.Parameter += rand.NextDouble() * 2 - 1; // Mutation between -1 and 1
-                mutations++;
+                lock (lockObject)
+                {
+                    mutations++;
+                }
             }
         }
     }
